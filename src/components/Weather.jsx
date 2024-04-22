@@ -27,6 +27,7 @@ export default function Weather(){
 
     return (
         <div>
+            <h1>Weather App</h1>
             <input type='text' placeholder='Enter Location Here' value={location} onChange={handleLocationChange} />
             <button onClick={fetchWeatherData}>Search</button>
             <WeatherCard weatherData={weatherData}/>

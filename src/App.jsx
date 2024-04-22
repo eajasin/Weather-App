@@ -1,18 +1,16 @@
-
-import Weather from './components/Weather'
-import TodoList from './components/TodoList'
-import './App.css'
+import Weather from "./components/Weather";
+import TodoList from "./components/TodoList";
+import ExpenseTracker from "./ExpenseTracker";
+import "./App.css";
 
 function App() {
-
   return (
     <div>
-      <h1>Weather App</h1>
-      <Weather />
-      <TodoList />
-      
+      {/* <Weather />
+      <TodoList /> */}
+      <ExpenseTracker />
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
