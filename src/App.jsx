@@ -6,9 +6,9 @@ import "./App.css";
 function App() {
   return (
     <div>
-      {/* <Weather />
-      <TodoList /> */}
-      <ExpenseTracker />
+      <Weather />
+      {/* <TodoList /> */}
+      {/* <ExpenseTracker /> */}
     </div>
   );
 }

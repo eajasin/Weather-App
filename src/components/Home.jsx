@@ -1,7 +1,10 @@
-
+import { Outlet } from "react-router-dom"
 
 export default function Home(){
     return (
-        <div>This is the home page.</div>
+        <h1>HELLO, WELCOME TO MY PAGE</h1>
+
+
+        
     )
 }
