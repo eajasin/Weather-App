@@ -1,6 +1,6 @@
 import Weather from "./components/Weather";
 import TodoList from "./components/TodoList";
-import ExpenseTracker from "./ExpenseTracker";
+import ExpenseTracker from "./components/ExpenseTracker";
 import "./App.css";
 
 function App() {

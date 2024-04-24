@@ -41,7 +41,7 @@ export default function ExpenseTracker(){
         setDescription("")
         setExpense("")
 
-        console.log([...expenseEntries, newEntry])
+        //console.log([...expenseEntries, newEntry])
         
 
     }
@@ -50,7 +50,7 @@ export default function ExpenseTracker(){
         let total = expenseEntries.reduce((total, entry) => total + parseFloat(entry.expense), 0)
         setTotalExpenses(total)
 
-        console.log("total:", total)
+        // console.log("total:", total)
     }
 
     useEffect(() => {

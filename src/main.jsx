@@ -1,12 +1,13 @@
 import React from 'react'
-import ReactDOM from 'react-dom'
+import ReactDOM from 'react-dom/client'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
-import Home from './components/Home'
-import Navbar from './components/Navbar'
+import Home from './routes/Home'
+import Navbar from './routes/Navbar'
 import App from './App'
-import NotFound from './components/NotFound'
+import NotFound from './routes/NotFound'
+import TodoList from './components/TodoList'
+import ExpenseTracker from './components/ExpenseTracker'
 import './index.css'
-import Weather from './components/Weather'
 
 const router = createBrowserRouter([
   {
@@ -15,7 +16,9 @@ const router = createBrowserRouter([
     errorElement: <NotFound />,
     children: [
       {index: true, element: <Home />},
-      {path: "weather", element: <App />}
+      {path: "weather", element: <App />},
+      {path: "todo", element: <TodoList />},
+      {path: "expense", element: <ExpenseTracker />}
     ]
 
   }

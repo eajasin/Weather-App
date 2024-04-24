@@ -7,10 +7,16 @@ export default function TodoList() {
 
   const handleChange = (e) => {
     setCreateTodo(e.target.value);
+    
   };
 
   const createNewTodo = (e) => {
     e.preventDefault();
+
+    if(!createTodo ){
+      alert("Must enter todo!")
+      return
+    }
 
     let newTodo = {
       id: Math.random() * 10000000,
@@ -29,6 +35,7 @@ export default function TodoList() {
         type="text"
         value={createTodo}
         placeholder="Enter Todo"
+        required
         onChange={handleChange}
       ></input>
       <button type="submit" onClick={createNewTodo}>
