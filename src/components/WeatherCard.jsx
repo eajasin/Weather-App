@@ -19,6 +19,8 @@ export default function WeatherCard({ weatherData }) {
 WeatherCard.propTypes = {
   weatherData: PropTypes.shape({
     humidity: PropTypes.number.isRequired,
+    condition: PropTypes.number.isRequired,
+    temp_f: PropTypes.number.isRequired
   }).isRequired,
 
 }

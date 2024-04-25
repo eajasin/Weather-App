@@ -5,6 +5,9 @@ export default function UpdateExpenses({expenseEntries, setExpenseEntries, total
   const [isEditing, setIsEditing] = useState(false)
   const [editedEntryId, setEditedEntryId] = useState(null)
   const [editedEntry, setEditedEntry] = useState("")
+  const [editedCategory, setEditedCategory] = useState("")
+  const [editedDescription, setEditedDescription] = useState("")
+  const [editedExpense, setEditedExpense] = useState("")
 
   const deleteEntry = (id) => {
     let updatedEntries = expenseEntries.filter((entry) => entry.id !== id);
@@ -15,7 +18,16 @@ export default function UpdateExpenses({expenseEntries, setExpenseEntries, total
     setIsEditing(true)
     // console.log(isEditing)
     setEditedEntryId(id)
-    setEditedEntry(expenseEntries.find((entry) => entry.id === id).description)
+
+    let editingField = expenseEntries.find((entry) => entry.id === id)
+
+    if (editingField){
+      const {description, category, expense} = editingField
+      setEditedCategory(category)
+      setEditedDescription(description)
+      setEditedExpense(expense)
+    }
+    setEditedEntry()
 
     console.log("Description to edit:",expenseEntries.find((entry) => entry.id === id).description)
     
@@ -24,13 +36,22 @@ export default function UpdateExpenses({expenseEntries, setExpenseEntries, total
   //console.log(expenseEntries[0].id)
 
   const updateEntry = () => {
-    
-    let updatedEntry = expenseEntries.map((entry) => entry.id === editedEntryId ? {...entry, description: editedEntry} : entry)
-   
-
-    setExpenseEntries(updatedEntry)
+    let updatedEntry = expenseEntries.map((entry) => {
+    if (entry.id === editedEntryId) {
+        return {
+            ...entry,
+            description: editedDescription,
+            category: editedCategory,
+            expense: editedExpense
+        };
+    } else {
+        return entry;
+    }
+  })
+setExpenseEntries(updatedEntry)
     setIsEditing(false)
-  }
+    
+}
 
   return (
     <div>
@@ -43,13 +64,21 @@ export default function UpdateExpenses({expenseEntries, setExpenseEntries, total
         <tbody>
           {isEditing ? (
             <div>
+               <select value={editedCategory} onChange={(e) => setEditedCategory(e.target.value)} >
+                    <option value="">Select a Category</option>
+                    <option value="Personal Care">Personal Care</option>
+                    <option value="Housing">Housing</option>
+                    <option value="Debt">Debt</option>
+                </select>
               <input
               type="text"
-              value={editedEntry}
+              value={editedDescription}
+              onChange={(e) => setEditedDescription(e.target.value)}
               />
-              <input
-              type="text"
-              value={editedEntry}
+               <input
+              type="number"
+              value={editedExpense}
+              onChange={(e) => setEditedExpense(e.target.value)}
               />
               <button onClick={updateEntry}>Update</button>
             </div>
@@ -67,9 +96,7 @@ export default function UpdateExpenses({expenseEntries, setExpenseEntries, total
               </tr>
             ))
           )
-          
-          
-          
+                            
           }
         </tbody>
         <tfoot style={{ fontWeight: "bold" }}>
